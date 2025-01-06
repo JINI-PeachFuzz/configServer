@@ -1,0 +1,19 @@
+server:
+  port: 3100
+
+spring:
+  application:
+    name: config-server
+
+  profiles:
+    active: native,git # 두가지를 모두 사용하고 싶을 때는 이렇게 하면 됨.
+
+  cloud:
+    config:
+      server:
+        native:
+          search-location: classpath:/configs
+        git: # 원격 레포지토리에 설정파일 조회 / 가져오는곳
+          uri: https://github.com/JINI-PeachFuzz/projectConfigs.git
+          searchPaths: configs
+          default-label: master # 특정 브랜치도 넣어줘야함
